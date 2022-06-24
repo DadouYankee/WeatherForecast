@@ -26,19 +26,17 @@ namespace WeatherForecastUnitTesting
         [TestMethod]
         public void WeatherForecastController_Get_ShouldReturn_WhenParameterIsNull()
         {
-            //Arrange
-            var expectedResult = new WeatherForecast
-            {
-                Date = new DateTime(2022, 06, 24),
-                TemperatureC = 30,
-                Summary = "Freezing"
-            };
+            //Arrange           
+            var expectedDate = new DateTime(2022, 06, 24);
 
             //Act
             var result = controller.Get();
 
             //Assert
-            Assert.Equals(result, expectedResult);
+            Assert.AreEqual(result.Date, expectedDate);
+            Assert.AreEqual(result.Summary, "Freezing");
+            Assert.AreEqual(result.TemperatureC, 30);
+
         }
     }
 }

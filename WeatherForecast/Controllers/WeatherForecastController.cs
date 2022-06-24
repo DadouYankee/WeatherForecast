@@ -19,9 +19,9 @@ namespace WeatherForecast.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public WeatherForecast Get()
+        public WeatherForecastClass Get()
         {
-            return new WeatherForecast
+            return new WeatherForecastClass
             {
                 Date = new DateTime(2022, 06, 24),
                 TemperatureC = 30,
