@@ -6,6 +6,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  systemDebut: 'true'
 
 steps:
 - task: DotNetCoreCLI@2
