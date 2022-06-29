@@ -15,12 +15,24 @@ steps:
     projects: '**/*.csproj'
     feedsToUse: 'select'
 
+- task: SonarQubePrepare@5
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'MSBuild'
+    projectKey: 'WeatherForecastApi_WeatherForecastApi_AYGwJeN6XO9sbJCMT7kZ'
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration ${buildConfiguration}'
+
+- task: SonarQubeAnalyze@5
+
+- task: SonarQubePublish@5
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: DotNetCoreCLI@2
   displayName: Collect code coverage
