@@ -33,9 +33,7 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\*test*.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
+      **\*WeatherForecastUnitTesting*.dll      
     searchFolder: '$(System.DefaultWorkingDirectory)'
     runOnlyImpactedTests: false
     runInParallel: true
