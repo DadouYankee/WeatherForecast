@@ -22,3 +22,27 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration ${buildConfiguration}'
 
+- task: DotNetCoreCLI@2
+  displayName: Collect code coverage
+  inputs:
+    command: test
+    projects: '**/*WeatherForecastUnitTesting/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    runOnlyImpactedTests: false
+    runInParallel: true
+    codeCoverageEnabled: true
+    testRunTitle: 'VSTest Automation Framework'
+    failOnMinTestsNotRun: true
+    rerunFailedTests: true
+    rerunFailedThreshold: '10'
+    rerunMaxAttempts: '2'
+	
