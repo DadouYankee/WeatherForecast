@@ -9,14 +9,22 @@ variables:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: Restore
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
     feedsToUse: 'select'
 
 - task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--configuration ${buildConfiguration}'
 
+- task: DotNetCoreCLI@2
+  displayName: Collect code coverage
+  inputs:
+    command: test
+    projects: '**/*WeatherForecastUnitTesting/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
