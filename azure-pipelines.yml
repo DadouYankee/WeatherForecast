@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  vmImage: Dadou-ADO-Agent
+  vmImage: windows-latest
 
 variables:
   buildConfiguration: 'Release'  
