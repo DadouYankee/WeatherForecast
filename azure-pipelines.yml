@@ -15,11 +15,11 @@ steps:
 #     projects: '**/*.csproj'
 #     feedsToUse: 'select'
 
-- task: SonarQubePrepare@5
-  inputs:
-    SonarQube: 'SonarQube'
-    scannerMode: 'MSBuild'
-    projectKey: 'WeatherForecastApi_AYGwJeN6XO9sbJCMT7kZ'
+# - task: SonarQubePrepare@5
+#   inputs:
+#     SonarQube: 'SonarQube'
+#     scannerMode: 'MSBuild'
+#     projectKey: 'WeatherForecastApi_AYGwJeN6XO9sbJCMT7kZ'
 
 - task: DotNetCoreCLI@2
   displayName: Build
