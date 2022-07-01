@@ -8,18 +8,18 @@ variables:
   buildConfiguration: 'Release'  
 
 steps:
-- task: DotNetCoreCLI@2
-  displayName: Restore
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
-    feedsToUse: 'select'
+# - task: DotNetCoreCLI@2
+#   displayName: Restore
+#   inputs:
+#     command: 'restore'
+#     projects: '**/*.csproj'
+#     feedsToUse: 'select'
 
 - task: SonarQubePrepare@5
   inputs:
     SonarQube: 'SonarQube'
     scannerMode: 'MSBuild'
-    projectKey: 'WeatherForecastApi_WeatherForecastApi_AYGwJeN6XO9sbJCMT7kZ'
+    projectKey: 'WeatherForecastApi_AYGwJeN6XO9sbJCMT7kZ'
 
 - task: DotNetCoreCLI@2
   displayName: Build
