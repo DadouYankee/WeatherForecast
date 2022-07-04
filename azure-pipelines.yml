@@ -10,31 +10,31 @@ variables:
 
 steps:
 
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '16'
-    jdkArchitectureOption: x64
-    jdkSourceOption: 'AzureStorage'
-    azureResourceManagerEndpoint: Azure Resource Manager
-    azureStorageAccountName: ADO_Blob_Storage
-    azureContainerName: jdks
-    azureCommonVirtualFile: 'openjdk.zip'
-    jdkDestinationDirectory: '$(agent.toolsDirectory)/jdk16'
-    cleanDestinationDirectory: true
+# - task: JavaToolInstaller@0
+#   inputs:
+#     versionSpec: '16'
+#     jdkArchitectureOption: x64
+#     jdkSourceOption: 'AzureStorage'
+#     azureResourceManagerEndpoint: Azure Resource Manager
+#     azureStorageAccountName: ADO_Blob_Storage
+#     azureContainerName: jdks
+#     azureCommonVirtualFile: 'openjdk.zip'
+#     jdkDestinationDirectory: '$(agent.toolsDirectory)/jdk16'
+#     cleanDestinationDirectory: true
 
-- task: DotNetCoreCLI@2
-  displayName: Restore
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
-    feedsToUse: 'select'
+# - task: DotNetCoreCLI@2
+#   displayName: Restore
+#   inputs:
+#     command: 'restore'
+#     projects: '**/*.csproj'
+#     feedsToUse: 'select'
 
-- task: DotNetCoreCLI@2
-  displayName: Build
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--configuration ${buildConfiguration}'
+# - task: DotNetCoreCLI@2
+#   displayName: Build
+#   inputs:
+#     command: 'build'
+#     projects: '**/*.csproj'
+#     arguments: '--configuration ${buildConfiguration}'
 
 - task: SonarQubePrepare@5
   inputs:
