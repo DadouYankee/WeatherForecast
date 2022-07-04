@@ -3,12 +3,25 @@ trigger:
 
 pool: ADO_Agent
   
-container: gradle:jdk16
+
 
 variables:
   buildConfiguration: 'Release'  
 
 steps:
+
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '16'
+    jdkArchitectureOption: x64
+    jdkSourceOption: 'AzureStorage'
+    azureResourceManagerEndpoint: Azure Resource Manager
+    azureStorageAccountName: ADO_Blob_Storage
+    azureContainerName: jdks
+    azureCommonVirtualFile: 'openjdk.zip'
+    jdkDestinationDirectory: '$(agent.toolsDirectory)/jdk16'
+    cleanDestinationDirectory: true
+
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
