@@ -2,8 +2,8 @@ trigger:
 - master
 
 pool: ADO_Agent
-  
 
+container:  gradle:jdk16
 
 variables:
   buildConfiguration: 'Release'  
@@ -22,19 +22,19 @@ steps:
 #     jdkDestinationDirectory: '$(agent.toolsDirectory)/jdk16'
 #     cleanDestinationDirectory: true
 
-# - task: DotNetCoreCLI@2
-#   displayName: Restore
-#   inputs:
-#     command: 'restore'
-#     projects: '**/*.csproj'
-#     feedsToUse: 'select'
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
 
-# - task: DotNetCoreCLI@2
-#   displayName: Build
-#   inputs:
-#     command: 'build'
-#     projects: '**/*.csproj'
-#     arguments: '--configuration ${buildConfiguration}'
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration ${buildConfiguration}'
 
 - task: SonarQubePrepare@5
   inputs:
