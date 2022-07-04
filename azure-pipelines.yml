@@ -3,6 +3,8 @@ trigger:
 
 pool: ADO_Agent
   
+container: gradle:jdk16
+
 variables:
   buildConfiguration: 'Release'  
 
